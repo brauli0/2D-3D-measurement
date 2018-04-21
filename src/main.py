@@ -35,8 +35,7 @@ class Controller():
 			button.connect("clicked", window.on_triangle_clicked)
 			bbox.add(button)
 			button = gtk.Button("Square")
-			bbox.add(button)
-			button = gtk.Button("Rectangle")
+			button.connect("clicked", window.on_square_clicked)
 			bbox.add(button)
 			vbox.pack_start(bbox)
 
@@ -45,13 +44,14 @@ class Controller():
 			bbox.set_layout(gtk.BUTTONBOX_SPREAD)
 			bbox.set_spacing(30)
 
-			button = gtk.Button("Diamond")
+			button = gtk.Button("Rectangle")
+			button.connect("clicked", window.on_rectangle_clicked)
+			bbox.add(button)
+			button = gtk.Button("Rhombus")
+			button.connect("clicked", window.on_rhombus_clicked)
 			bbox.add(button)
 			button = gtk.Button("Parallelogram")
-			bbox.add(button)
-			button = gtk.Button("Trapezoid")
-			bbox.add(button)
-			button = gtk.Button("Pentagon")
+			button.connect("clicked", window.on_parallelogram_clicked)
 			bbox.add(button)
 			vbox.pack_start(bbox)
 
@@ -60,13 +60,11 @@ class Controller():
 			bbox.set_layout(gtk.BUTTONBOX_SPREAD)
 			bbox.set_spacing(30)
 
-			button = gtk.Button("Hexagon")
+			button = gtk.Button("Trapezoid")
+			button.connect("clicked", window.on_trapezoid_clicked)
 			bbox.add(button)
-			button = gtk.Button("Heptagon")
-			bbox.add(button)
-			button = gtk.Button("Octagon")
-			bbox.add(button)
-			button = gtk.Button("Decagon")
+			button = gtk.Button("Regular polygon")
+			button.connect("clicked", window.on_polygon_clicked)
 			bbox.add(button)
 			vbox.pack_start(bbox)
 
@@ -143,13 +141,18 @@ class Controller():
 			vbox.pack_start(hbox, padding=10)
 			label = gtk.Label("Radius:  ")
 			hbox.pack_start(label)
-			entry = gtk.Entry(max=10)
-			hbox.pack_start(entry)
+			radiusEntry = gtk.Entry(max=10)
+			hbox.pack_start(radiusEntry)
 
-			button = gtk.Button("Solve")
-			vbox.pack_start(button, padding=10)
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
 
-			label = gtk.Label("RESULT:  ")
+			label = gtk.Label("RESULT: ")
 			vbox.pack_start(label, padding=10)
 
 		elif screen == 3:
@@ -157,9 +160,275 @@ class Controller():
 			window.box = gtk.VBox()
 			window.add(window.box)
 
-			label = gtk.Label("TRIANGLE")
-			window.box.add(label)
-			
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("TRIANGLE AREA")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Base:  ")
+			hbox.pack_start(label)
+			baseEntry = gtk.Entry(max=10)
+			hbox.pack_start(baseEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Height:  ")
+			hbox.pack_start(label)
+			heightEntry = gtk.Entry(max=10)
+			hbox.pack_start(heightEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			label = gtk.Label("RESULT: ")
+			vbox.pack_start(label, padding=10)
+
+
+		elif screen == 4:
+			# SQUARE
+			window.box = gtk.VBox()
+			window.add(window.box)
+
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("SQUARE AREA")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Side:  ")
+			hbox.pack_start(label)
+			sideEntry = gtk.Entry(max=10)
+			hbox.pack_start(sideEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			label = gtk.Label("RESULT: ")
+			vbox.pack_start(label, padding=10)
+
+		elif screen == 5:
+			# RECTANGLE
+			window.box = gtk.VBox()
+			window.add(window.box)
+
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("RECTANGLE AREA")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Base:  ")
+			hbox.pack_start(label)
+			baseEntry = gtk.Entry(max=10)
+			hbox.pack_start(baseEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Height:  ")
+			hbox.pack_start(label)
+			heightEntry = gtk.Entry(max=10)
+			hbox.pack_start(heightEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			label = gtk.Label("RESULT: ")
+			vbox.pack_start(label, padding=10)
+
+		elif screen == 6:
+			# RHOMBUS
+			window.box = gtk.VBox()
+			window.add(window.box)
+
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("RHOMBUS AREA")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Diagonal 1:  ")
+			hbox.pack_start(label)
+			diag1Entry = gtk.Entry(max=10)
+			hbox.pack_start(diag1Entry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Diagonal 2:  ")
+			hbox.pack_start(label)
+			diag2Entry = gtk.Entry(max=10)
+			hbox.pack_start(diag2Entry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			label = gtk.Label("RESULT: ")
+			vbox.pack_start(label, padding=10)
+
+		elif screen == 7:
+			# PARALLELOGRAM
+			window.box = gtk.VBox()
+			window.add(window.box)
+
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("PARALLELOGRAM AREA")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Base:  ")
+			hbox.pack_start(label)
+			baseEntry = gtk.Entry(max=10)
+			hbox.pack_start(baseEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Height:  ")
+			hbox.pack_start(label)
+			heightEntry = gtk.Entry(max=10)
+			hbox.pack_start(heightEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			label = gtk.Label("RESULT: ")
+			vbox.pack_start(label, padding=10)
+
+		elif screen == 8:
+			# TRAPEZOID
+			window.box = gtk.VBox()
+			window.add(window.box)
+
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("TRAPEZOID AREA")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Base 1:  ")
+			hbox.pack_start(label)
+			base1Entry = gtk.Entry(max=10)
+			hbox.pack_start(base1Entry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Base 2:  ")
+			hbox.pack_start(label)
+			base2Entry = gtk.Entry(max=10)
+			hbox.pack_start(base2Entry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Height:  ")
+			hbox.pack_start(label)
+			heightEntry = gtk.Entry(max=10)
+			hbox.pack_start(heightEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			label = gtk.Label("RESULT: ")
+			vbox.pack_start(label, padding=10)
+
+		elif screen == 9:
+			# REGULAR POLYGON
+			window.box = gtk.VBox()
+			window.add(window.box)
+
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("REGULAR POLYGON AREA")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Base:  ")
+			hbox.pack_start(label)
+			baseEntry = gtk.Entry(max=10)
+			hbox.pack_start(baseEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Height:  ")
+			hbox.pack_start(label)
+			heightEntry = gtk.Entry(max=10)
+			hbox.pack_start(heightEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			label = gtk.Label("RESULT: ")
+			vbox.pack_start(label, padding=10)
+
 		else:
 			print("Entrou aqui")
 
@@ -177,6 +446,11 @@ class main(gtk.Window):
 
 		self.show_all()
 
+	def on_back_clicked(self, widget):
+		self.remove(self.box)
+		self.controller.change_screen(self, 1)
+		self.show_all()
+
 	def on_circle_clicked(self, widget):
 		self.remove(self.box)
 		self.controller.change_screen(self, 2)
@@ -185,6 +459,36 @@ class main(gtk.Window):
 	def on_triangle_clicked(self, widget):
 		self.remove(self.box)
 		self.controller.change_screen(self, 3)
+		self.show_all()
+
+	def on_square_clicked(self, widget):
+		self.remove(self.box)
+		self.controller.change_screen(self, 4)
+		self.show_all()
+
+	def on_rectangle_clicked(self, widget):
+		self.remove(self.box)
+		self.controller.change_screen(self, 5)
+		self.show_all()
+
+	def on_rhombus_clicked(self, widget):
+		self.remove(self.box)
+		self.controller.change_screen(self, 6)
+		self.show_all()
+
+	def on_parallelogram_clicked(self, widget):
+		self.remove(self.box)
+		self.controller.change_screen(self, 7)
+		self.show_all()
+
+	def on_trapezoid_clicked(self, widget):
+		self.remove(self.box)
+		self.controller.change_screen(self, 8)
+		self.show_all()
+
+	def on_polygon_clicked(self, widget):
+		self.remove(self.box)
+		self.controller.change_screen(self, 9)
 		self.show_all()
 
 if __name__ == '__main__':
