@@ -26,37 +26,59 @@ class Events:
 			return False
 		else:
 			return True
-
-	def on_buttonArea_clicked(self, widget):
-		print("Area")
-
-	def on_buttonVolume_clicked(self, widget):
-		print("Volume")
 		
+class Interface():
+	def __init__(self):
+		pass
 
-class Interface(Gtk.Window):
+	def change_box(self, window, events, screen):
+		if screen == 1:
+			window.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+			window.add(window.box)
+			window.box.set_margin_top(50)
+			window.box.set_margin_right(200)
+			window.box.set_margin_left(200)
+			window.box.set_margin_bottom(50)
+			buttonArea = Gtk.Button(label="Button 1")
+			buttonArea.connect("clicked", window.on_button1_clicked)
+			window.box.add(buttonArea)
+		elif screen == 2:
+			window.box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
+			window.add(window.box)
+			window.box.set_margin_top(50)
+			window.box.set_margin_right(200)
+			window.box.set_margin_left(200)
+			window.box.set_margin_bottom(50)
+			buttonArea = Gtk.Button(label="Button 2")
+			buttonArea.connect("clicked", window.on_button2_clicked)
+			window.box.add(buttonArea)
+		else:
+			print("Entrou aquí")
+
+class main(Gtk.Window):
 	def __init__(self):
 		Gtk.Window.__init__(self, title="2D&3D MEASUREMENT")
 		self.set_resizable(False)
 
-		events = Events()
-		self.connect("delete-event", events.on_exit_clicked)
+		self.events = Events()
+		#self.connect("delete-event", events.on_exit_clicked)
+		self.connect("delete-event", Gtk.main_quit)
 
-		box = Gtk.Box(orientation=Gtk.Orientation.VERTICAL, spacing=8)
-		self.add(box)
-		box.set_margin_top(50)
-		box.set_margin_right(200)
-		box.set_margin_left(200)
-		box.set_margin_bottom(50)
-		buttonArea = Gtk.Button(label="Area")
-		buttonArea.connect("clicked", events.on_buttonArea_clicked)
-		box.add(buttonArea)
-		buttonVolume = Gtk.Button(label="Volume")
-		buttonVolume.connect("clicked", events.on_buttonVolume_clicked)
-		box.add(buttonVolume)
+		self.interface = Interface()
+		self.interface.change_box(self, self.events, 1)
 
 		self.show_all()
 
+	def on_button1_clicked(self, widget):
+		self.remove(self.box)
+		self.interface.change_box(self, self.events, 2)
+		self.show_all()
+
+	def on_button2_clicked(self, widget):
+		self.remove(self.box)
+		self.interface.change_box(self, self.events, 1)
+		self.show_all()
+
 if __name__ == '__main__':
-	window = Interface()
+	main()
 	Gtk.main()
