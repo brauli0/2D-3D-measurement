@@ -1,2 +1,2 @@
-# 2D-3D-measurement
+# 2D&3D measurement
 Python project with graphic interface to measure areas and volumes
