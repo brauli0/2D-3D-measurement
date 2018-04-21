@@ -5,13 +5,14 @@ __autor__ = "Braulio Mendez Agra"
 import pygtk
 pygtk.require('2.0')
 import gtk
-		
+from areas import Areas
+
 class Controller():
 	def __init__(self):
 		pass
 
-	def change_screen(self, window, screen):
-		if screen == 1:
+	def change_screen(self, window, screen, areas):
+		if screen == "main_menu":
 			window.box = gtk.VBox()
 			window.add(window.box)
 			
@@ -123,7 +124,7 @@ class Controller():
 			bbox.add(button)
 			vbox.pack_start(bbox)
 
-		elif screen == 2:
+		elif screen == "circle":
 			# CIRCLE
 			window.box = gtk.VBox()
 			window.add(window.box)
@@ -152,10 +153,12 @@ class Controller():
 			button = gtk.Button("SOLVE")
 			hbox.pack_start(button, padding=5)
 
-			label = gtk.Label("RESULT: ")
-			vbox.pack_start(label, padding=10)
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
 
-		elif screen == 3:
+			button.connect("clicked", areas.circle, radiusEntry, labelResult)
+
+		elif screen == "triangle":
 			# TRIANGLE
 			window.box = gtk.VBox()
 			window.add(window.box)
@@ -191,11 +194,11 @@ class Controller():
 			button = gtk.Button("SOLVE")
 			hbox.pack_start(button, padding=5)
 
-			label = gtk.Label("RESULT: ")
-			vbox.pack_start(label, padding=10)
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
 
 
-		elif screen == 4:
+		elif screen == "square":
 			# SQUARE
 			window.box = gtk.VBox()
 			window.add(window.box)
@@ -224,10 +227,10 @@ class Controller():
 			button = gtk.Button("SOLVE")
 			hbox.pack_start(button, padding=5)
 
-			label = gtk.Label("RESULT: ")
-			vbox.pack_start(label, padding=10)
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
 
-		elif screen == 5:
+		elif screen == "rectangle":
 			# RECTANGLE
 			window.box = gtk.VBox()
 			window.add(window.box)
@@ -263,10 +266,10 @@ class Controller():
 			button = gtk.Button("SOLVE")
 			hbox.pack_start(button, padding=5)
 
-			label = gtk.Label("RESULT: ")
-			vbox.pack_start(label, padding=10)
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
 
-		elif screen == 6:
+		elif screen == "rhombus":
 			# RHOMBUS
 			window.box = gtk.VBox()
 			window.add(window.box)
@@ -302,10 +305,10 @@ class Controller():
 			button = gtk.Button("SOLVE")
 			hbox.pack_start(button, padding=5)
 
-			label = gtk.Label("RESULT: ")
-			vbox.pack_start(label, padding=10)
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
 
-		elif screen == 7:
+		elif screen == "parallelogram":
 			# PARALLELOGRAM
 			window.box = gtk.VBox()
 			window.add(window.box)
@@ -341,10 +344,10 @@ class Controller():
 			button = gtk.Button("SOLVE")
 			hbox.pack_start(button, padding=5)
 
-			label = gtk.Label("RESULT: ")
-			vbox.pack_start(label, padding=10)
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
 
-		elif screen == 8:
+		elif screen == "trapezoid":
 			# TRAPEZOID
 			window.box = gtk.VBox()
 			window.add(window.box)
@@ -387,10 +390,10 @@ class Controller():
 			button = gtk.Button("SOLVE")
 			hbox.pack_start(button, padding=5)
 
-			label = gtk.Label("RESULT: ")
-			vbox.pack_start(label, padding=10)
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
 
-		elif screen == 9:
+		elif screen == "polygon":
 			# REGULAR POLYGON
 			window.box = gtk.VBox()
 			window.add(window.box)
@@ -426,11 +429,8 @@ class Controller():
 			button = gtk.Button("SOLVE")
 			hbox.pack_start(button, padding=5)
 
-			label = gtk.Label("RESULT: ")
-			vbox.pack_start(label, padding=10)
-
-		else:
-			print("Entrou aqui")
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
 
 class main(gtk.Window):
 	def __init__(self):
@@ -441,54 +441,55 @@ class main(gtk.Window):
 
 		self.connect("delete-event", gtk.main_quit)
 
+		self.areas = Areas()
 		self.controller = Controller()
-		self.controller.change_screen(self, 1)
+		self.controller.change_screen(self, "main_menu", self.areas)
 
 		self.show_all()
 
 	def on_back_clicked(self, widget):
 		self.remove(self.box)
-		self.controller.change_screen(self, 1)
+		self.controller.change_screen(self, "main_menu", self.areas)
 		self.show_all()
 
 	def on_circle_clicked(self, widget):
 		self.remove(self.box)
-		self.controller.change_screen(self, 2)
+		self.controller.change_screen(self, "circle", self.areas)
 		self.show_all()
 
 	def on_triangle_clicked(self, widget):
 		self.remove(self.box)
-		self.controller.change_screen(self, 3)
+		self.controller.change_screen(self, "triangle", self.areas)
 		self.show_all()
 
 	def on_square_clicked(self, widget):
 		self.remove(self.box)
-		self.controller.change_screen(self, 4)
+		self.controller.change_screen(self, "square", self.areas)
 		self.show_all()
 
 	def on_rectangle_clicked(self, widget):
 		self.remove(self.box)
-		self.controller.change_screen(self, 5)
+		self.controller.change_screen(self, "rectangle", self.areas)
 		self.show_all()
 
 	def on_rhombus_clicked(self, widget):
 		self.remove(self.box)
-		self.controller.change_screen(self, 6)
+		self.controller.change_screen(self, "rhombus", self.areas)
 		self.show_all()
 
 	def on_parallelogram_clicked(self, widget):
 		self.remove(self.box)
-		self.controller.change_screen(self, 7)
+		self.controller.change_screen(self, "parallelogram", self.areas)
 		self.show_all()
 
 	def on_trapezoid_clicked(self, widget):
 		self.remove(self.box)
-		self.controller.change_screen(self, 8)
+		self.controller.change_screen(self, "trapezoid", self.areas)
 		self.show_all()
 
 	def on_polygon_clicked(self, widget):
 		self.remove(self.box)
-		self.controller.change_screen(self, 9)
+		self.controller.change_screen(self, "polygon", self.areas)
 		self.show_all()
 
 if __name__ == '__main__':
