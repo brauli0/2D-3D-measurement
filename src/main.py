@@ -197,6 +197,7 @@ class Controller():
 			labelResult = gtk.Label("RESULT: -")
 			vbox.pack_start(labelResult, padding=10)
 
+			button.connect("clicked", areas.triangle, baseEntry, heightEntry, labelResult)
 
 		elif screen == "square":
 			# SQUARE
@@ -229,6 +230,8 @@ class Controller():
 
 			labelResult = gtk.Label("RESULT: -")
 			vbox.pack_start(labelResult, padding=10)
+
+			button.connect("clicked", areas.square, sideEntry, labelResult)
 
 		elif screen == "rectangle":
 			# RECTANGLE
@@ -269,6 +272,8 @@ class Controller():
 			labelResult = gtk.Label("RESULT: -")
 			vbox.pack_start(labelResult, padding=10)
 
+			button.connect("clicked", areas.rectangle, baseEntry, heightEntry, labelResult)
+
 		elif screen == "rhombus":
 			# RHOMBUS
 			window.box = gtk.VBox()
@@ -308,6 +313,8 @@ class Controller():
 			labelResult = gtk.Label("RESULT: -")
 			vbox.pack_start(labelResult, padding=10)
 
+			button.connect("clicked", areas.rhombus, diag1Entry, diag2Entry, labelResult)
+
 		elif screen == "parallelogram":
 			# PARALLELOGRAM
 			window.box = gtk.VBox()
@@ -346,6 +353,8 @@ class Controller():
 
 			labelResult = gtk.Label("RESULT: -")
 			vbox.pack_start(labelResult, padding=10)
+
+			button.connect("clicked", areas.parallelogram, baseEntry, heightEntry, labelResult)
 
 		elif screen == "trapezoid":
 			# TRAPEZOID
@@ -393,6 +402,8 @@ class Controller():
 			labelResult = gtk.Label("RESULT: -")
 			vbox.pack_start(labelResult, padding=10)
 
+			button.connect("clicked", areas.trapezoid, base1Entry, base2Entry, heightEntry, labelResult)
+
 		elif screen == "polygon":
 			# REGULAR POLYGON
 			window.box = gtk.VBox()
@@ -409,17 +420,17 @@ class Controller():
 
 			hbox = gtk.HBox()
 			vbox.pack_start(hbox, padding=10)
-			label = gtk.Label("Base:  ")
+			label = gtk.Label("Number of sides:  ")
 			hbox.pack_start(label)
-			baseEntry = gtk.Entry(max=10)
-			hbox.pack_start(baseEntry)
+			numberEntry = gtk.Entry(max=10)
+			hbox.pack_start(numberEntry)
 
 			hbox = gtk.HBox()
 			vbox.pack_start(hbox, padding=10)
-			label = gtk.Label("Height:  ")
+			label = gtk.Label("Side length:  ")
 			hbox.pack_start(label)
-			heightEntry = gtk.Entry(max=10)
-			hbox.pack_start(heightEntry)
+			sideEntry = gtk.Entry(max=10)
+			hbox.pack_start(sideEntry)
 
 			hbox = gtk.HBox()
 			vbox.pack_start(hbox, padding=10)
@@ -431,6 +442,8 @@ class Controller():
 
 			labelResult = gtk.Label("RESULT: -")
 			vbox.pack_start(labelResult, padding=10)
+
+			button.connect("clicked", areas.polygon, numberEntry, sideEntry, labelResult)
 
 class main(gtk.Window):
 	def __init__(self):
