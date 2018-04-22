@@ -652,24 +652,298 @@ class Controller():
 
 		elif screen == "cylinder":
 			# CYLINDER
+			window.box = gtk.VBox()
+			window.add(window.box)
+
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("CYLINDER VOLUME")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Base radius:  ")
+			hbox.pack_start(label)
+			radiusEntry = gtk.Entry(max=10)
+			hbox.pack_start(radiusEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Height:  ")
+			hbox.pack_start(label)
+			heightEntry = gtk.Entry(max=10)
+			hbox.pack_start(heightEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
+
+			button.connect("clicked", volumes.cylinder, radiusEntry, heightEntry, labelResult)
 
 		elif screen == "orthohedron":
+			# ORTHOHEDRON
+			window.box = gtk.VBox()
+			window.add(window.box)
+
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("ORTHOHEDRON VOLUME")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Edge 1:  ")
+			hbox.pack_start(label)
+			edge1Entry = gtk.Entry(max=10)
+			hbox.pack_start(edge1Entry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Edge 2:  ")
+			hbox.pack_start(label)
+			edge2Entry = gtk.Entry(max=10)
+			hbox.pack_start(edge2Entry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Edge 3:  ")
+			hbox.pack_start(label)
+			edge3Entry = gtk.Entry(max=10)
+			hbox.pack_start(edge3Entry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
+
+			button.connect("clicked", volumes.orthohedron, edge1Entry, edge2Entry, edge3Entry, labelResult)
 
 
 		elif screen == "octahedron":
+			# OCTAHEDRON
+			window.box = gtk.VBox()
+			window.add(window.box)
 
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("OCTAHEDRON VOLUME")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Edge:  ")
+			hbox.pack_start(label)
+			edgeEntry = gtk.Entry(max=10)
+			hbox.pack_start(edgeEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
+
+			button.connect("clicked", volumes.octahedron, edgeEntry, labelResult)
 
 		elif screen == "pyramid":
+			# PYRAMID
+			window.box = gtk.VBox()
+			window.add(window.box)
 
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("PYRAMID VOLUME")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Base area:  ")
+			hbox.pack_start(label)
+			areaEntry = gtk.Entry(max=10)
+			hbox.pack_start(areaEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Height:  ")
+			hbox.pack_start(label)
+			heightEntry = gtk.Entry(max=10)
+			hbox.pack_start(heightEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
+
+			button.connect("clicked", volumes.pyramid, areaEntry, heightEntry, labelResult)
 
 		elif screen == "pyramid_trunk":
+			# PYRAMID TRUNK
+			window.box = gtk.VBox()
+			window.add(window.box)
 
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("PYRAMID TRUNK VOLUME")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Area 1:  ")
+			hbox.pack_start(label)
+			area1Entry = gtk.Entry(max=10)
+			hbox.pack_start(area1Entry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Area 2:  ")
+			hbox.pack_start(label)
+			area2Entry = gtk.Entry(max=10)
+			hbox.pack_start(area2Entry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Height:  ")
+			hbox.pack_start(label)
+			heightEntry = gtk.Entry(max=10)
+			hbox.pack_start(heightEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
+
+			button.connect("clicked", volumes.pyramid_trunk, area1Entry, area2Entry, heightEntry, labelResult)
 
 		elif screen == "prism":
+			# PRISM
+			window.box = gtk.VBox()
+			window.add(window.box)
 
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("PRISM VOLUME")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Base area:  ")
+			hbox.pack_start(label)
+			areaEntry = gtk.Entry(max=10)
+			hbox.pack_start(areaEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Height:  ")
+			hbox.pack_start(label)
+			heightEntry = gtk.Entry(max=10)
+			hbox.pack_start(heightEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
+
+			button.connect("clicked", volumes.prism, areaEntry, heightEntry, labelResult)
 
 		elif screen == "torus":
+			# TORUS
+			window.box = gtk.VBox()
+			window.add(window.box)
 
+			hbox = gtk.HBox()
+			window.box.pack_start(hbox, padding=10)
+
+			vbox = gtk.VBox()
+			hbox.pack_start(vbox, padding=30)
+
+			label = gtk.Label("TORUS VOLUME")
+			vbox.pack_start(label, padding=10)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Greater radius:  ")
+			hbox.pack_start(label)
+			greaterEntry = gtk.Entry(max=10)
+			hbox.pack_start(greaterEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			label = gtk.Label("Smaller radius:  ")
+			hbox.pack_start(label)
+			smallerEntry = gtk.Entry(max=10)
+			hbox.pack_start(smallerEntry)
+
+			hbox = gtk.HBox()
+			vbox.pack_start(hbox, padding=10)
+			button = gtk.Button("BACK")
+			button.connect("clicked", window.on_back_clicked)
+			hbox.pack_start(button, padding=5)
+			button = gtk.Button("SOLVE")
+			hbox.pack_start(button, padding=5)
+
+			labelResult = gtk.Label("RESULT: -")
+			vbox.pack_start(labelResult, padding=10)
+
+			button.connect("clicked", volumes.torus, greaterEntry, smallerEntry, labelResult)
 
 class main(gtk.Window):
 	def __init__(self):

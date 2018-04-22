@@ -24,4 +24,23 @@ class Volumes:
 	def cone(self, _, radiusEntry, heightEntry, label):
 		pass
 
-	
+	def cylinder(self, _, radiusEntry, heightEntry, label):
+		pass
+
+	def orthohedron(self, _, edge1Entry, edge2Entry, edge3Entry, label):
+		pass
+
+	def octahedron(self, _, edgeEntry, label):
+		pass
+
+	def pyramid(self, _, areaEntry, heightEntry, label):
+		pass
+
+	def pyramid_trunk(self, _, area1Entry, area2Entry, heightEntry, label):
+		pass
+
+	def prism(self, _, areaEntry, heightEntry, label):
+		pass
+
+	def torus(self, _, greaterEntry, smallerEntry, labelResult):
+		pass
