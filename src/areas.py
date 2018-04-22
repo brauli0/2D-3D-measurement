@@ -2,7 +2,7 @@
 
 import math
 
-class Areas(object):
+class Areas:
 	def __init__(self):
 		pass
 
