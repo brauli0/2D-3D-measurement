@@ -607,7 +607,7 @@ class Controller():
 			labelResult = gtk.Label("RESULT: -")
 			vbox.pack_start(labelResult, padding=10)
 
-			button.connect("clicked", volumes.tetrahedron, edgeEntry, labelResult)
+			button.connect("clicked", volumes.cube, edgeEntry, labelResult)
 
 		elif screen == "cone":
 			# CONE
