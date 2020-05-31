@@ -2,9 +2,9 @@
 PyGTK application to measure areas and volumes with an intuitive graphic interface  
 
 ---
-## Run it!
+## Try it out!
 ```bash
-$ python main.py
+$ python2 main.py
 ```
 
 ---
